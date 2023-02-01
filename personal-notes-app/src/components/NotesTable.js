@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getNotes } from "../redux/actions/notesActions";
+import { deleteNote, getNotes } from "../redux/actions/notesActions";
+import { Button } from "react-bootstrap";
 
 const NotesTable = () => {
 	const notes = useSelector((state) => state.notesReducer.notes);
@@ -15,6 +16,14 @@ const NotesTable = () => {
 			<tbody>
 				{notes.map((n) => (
 					<tr>
+						<td>
+							<Button
+								className="button btn-danger"
+								onClick={() => deleteNote(dispatch, n)}
+							>
+								Delete
+							</Button>
+						</td>
 						<td>{n.value}</td>
 					</tr>
 				))}

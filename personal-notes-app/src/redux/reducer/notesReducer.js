@@ -1,4 +1,4 @@
-import { SET_NOTES } from "../types";
+import { CREATE_NOTE, SET_NOTES } from "../types";
 import { DELETE_NOTES } from "../types";
 
 const initialState = {
@@ -17,6 +17,8 @@ export default function notesReducer(state = initialState, action) {
 				}
 			}
 			return { ...state, notes: [...state.notes] };
+		case CREATE_NOTE:
+			return { ...state, notes: [...state.notes, action.payload] };
 		default:
 			return state;
 	}

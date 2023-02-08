@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { InputGroup, FormControl, Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { createNote } from "../redux/actions/notesActions";
+import { createNote, editNote } from "../redux/actions/notesActions";
 
 export const NewNotesModal = () => {
 	const [show, setShow] = useState(false);
@@ -19,6 +19,27 @@ export const NewNotesModal = () => {
 			<NotesModal
 				note={null}
 				handleFormSubmit={createNote}
+				show={show}
+				handleClose={handleClose}
+			/>
+		</div>
+	);
+};
+
+export const EditNotesModal = ({ note }) => {
+	const [show, setShow] = useState(false);
+
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
+
+	return (
+		<div>
+			<Button className="btn btn-info" onClick={handleShow}>
+				Edit Note
+			</Button>
+			<NotesModal
+				note={note}
+				handleFormSubmit={editNote}
 				show={show}
 				handleClose={handleClose}
 			/>

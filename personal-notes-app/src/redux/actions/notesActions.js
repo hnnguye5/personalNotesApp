@@ -1,4 +1,4 @@
-import { CREATE_NOTE, DELETE_NOTES, SET_NOTES } from "../types";
+import { CREATE_NOTE, DELETE_NOTES, EDIT_NOTE, SET_NOTES } from "../types";
 
 export const getNotes = async (dispatch) => {
 	try {
@@ -34,6 +34,17 @@ export const createNote = async (dispatch, note) => {
 		const response = { value: note, id: 1 };
 		dispatch({
 			type: CREATE_NOTE,
+			payload: response,
+		});
+	} catch (error) {
+		console.log(error);
+	}
+};
+export const editNote = async (dispatch, note) => {
+	try {
+		const response = { value: note, id: 1 };
+		dispatch({
+			type: EDIT_NOTE,
 			payload: response,
 		});
 	} catch (error) {
